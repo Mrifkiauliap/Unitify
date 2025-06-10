@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
 
 import { useHead } from '@vueuse/head'
 
@@ -9,15 +9,15 @@ useHead({
     {
       rel: 'icon',
       type: 'image/png',
-      href: 'public/unitify.png'
-    }
+      href: 'public/unitify.png',
+    },
   ],
   meta: [
     {
       name: 'description',
-      content: 'Aplikasi reminder kuliah dan tugas'
-    }
-  ]
+      content: 'Aplikasi reminder kuliah dan tugas',
+    },
+  ],
 })
 </script>
 
