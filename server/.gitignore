@@ -1,0 +1,32 @@
+# Node modules (library)
+node_modules/
+
+# Env variables
+.env
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# VSCode setting (opsional, kalo kerja tim hati-hati)
+.vscode/
+
+# Binaries / build
+dist/
+build/
+
+# Coverage testing
+coverage/
+
+# SQLite / local dbs (optional)
+*.sqlite
+*.sqlite3
+
+# Uploaded files (kalo ada fitur upload lokal)
+uploads/
+public/uploads/
