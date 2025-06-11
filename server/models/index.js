@@ -4,11 +4,17 @@ const Sequelize = require("sequelize");
 
 const basename = path.basename(__filename);
 
-const sequelize = new Sequelize("unitify", "root", "", {
-  host: "localhost",
-  dialect: "mariadb",
-  logging: (msg) => console.log(msg), // ⬅️ tampilkan query SQL
-});
+const sequelize = new Sequelize(
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
+  {
+    host: process.env.DB_HOST,
+    dialect: process.env.DB_DIALECT,
+    port: process.env.DB_PORT || 3306,
+    logging: (msg) => console.log(msg), // ⬅️ tampilkan query SQL
+  }
+);
 
 const db = {};
 
