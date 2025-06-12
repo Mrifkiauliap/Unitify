@@ -11,7 +11,7 @@ useHead({
     {
       rel: 'icon',
       type: 'image/png',
-      href: 'public/unitify.png',
+      href: '/unitify.png',
     },
   ],
   meta: [
@@ -24,9 +24,9 @@ useHead({
 </script>
 
 <template>
-  <RouterView />
   <Analytics />
   <SpeedInsights />
+  <RouterView />
 </template>
 
 <style scoped></style>
