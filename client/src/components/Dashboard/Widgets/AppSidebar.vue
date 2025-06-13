@@ -1,20 +1,12 @@
 <template>
   <aside class="h-full w-64 bg-base-200 p-4">
-    <RouterLink
-      to="/dashboard"
-      class="text-lg font-semibold mb-4"
-      @click="handleSidebarClick"
-    >
+    <RouterLink to="/dashboard" class="text-lg font-semibold mb-4" @click="handleSidebarClick">
       UNITIFY
     </RouterLink>
 
     <ul class="menu space-y-1">
       <li>
-        <RouterLink
-          to="/dashboard"
-          class="btn btn-ghost justify-start"
-          @click="handleSidebarClick"
-        >
+        <RouterLink to="/dashboard" class="btn btn-ghost justify-start" @click="handleSidebarClick">
           🏠 Dashboard
         </RouterLink>
       </li>
