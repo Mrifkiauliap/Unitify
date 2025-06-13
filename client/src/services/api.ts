@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // Gunakan variabel lingkungan dari .env
-const API_BASE_URL = process.env.API_BASE_URL
+const API_BASE_URL =  'http://localhost:3001'
 
 // Base URL API
 const api = axios.create({
@@ -29,7 +29,9 @@ api.interceptors.request.use(
 
 // Interceptor untuk response: refresh token jika expired
 let isRefreshing = false
-let failedRequestsQueue = []
+
+// ✅ Deklarasi tipe secara eksplisit
+const failedRequestsQueue: ((token: string | null) => void)[] = []
 
 api.interceptors.response.use(
   (response) => response,
@@ -42,7 +44,7 @@ api.interceptors.response.use(
     ) {
       if (isRefreshing) {
         return new Promise((resolve, reject) => {
-          failedRequestsQueue.push((token) => {
+          failedRequestsQueue.push((token: string | null) => {
             if (token) {
               originalRequest.headers.Authorization = `Bearer ${token}`
               resolve(api(originalRequest))
@@ -67,9 +69,8 @@ api.interceptors.response.use(
         const newAccessToken = response.data.access_token
         localStorage.setItem('access_token', newAccessToken)
 
-        // Jalankan semua request yang tertunda
-        failedRequestsQueue.forEach((cb) => cb(newAccessToken))
-        failedRequestsQueue = []
+        // ✅ Gunakan tipe callback dengan parameter bertipe eksplisit
+        failedRequestsQueue.forEach((cb: (token: string | null) => void) => cb(newAccessToken))
 
         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`
         return api(originalRequest)
